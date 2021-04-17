@@ -1,0 +1,26 @@
+<span id="IP">Loading...................</span>
+<span id="City">Loading...................</span>
+<span id="State">Loading...................</span>
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+	$.get('https://ipinfo.io',function(response){
+		$("#IP").html('IP: <b>'+response.ip+'<b>');
+		$("#City").html('City: <b>'+response.city+'<b>');
+		$("#State").html('State: <b>'+response.region+'<b>');
+	},'json');
+</script>
+
+
+
+<!-- Wordpress Shortcode -->
+function state_name_shortcode(){
+    return '<span id="State">Loading...</span>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript">
+	 jQuery.get("https://ipinfo.io",function(response){
+	 jQuery("#City").html("<b>"+response.city+"<b>");
+	 jQuery("#State").html("<b>"+response.region+"<b>");
+	 },"json");
+	</script>';
+}
+add_shortcode('State', 'state_name_shortcode'); 
